@@ -11,7 +11,11 @@
 
     <header>
         <div class="header-container">
-            <h1 id="logo" onclick="showSection('home')">MechCalc</h1>
+            <h1 id="logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="MechCalc Logo" class="logo-img">
+                </a>
+            </h1>
             <div class="lang-selector">
                 <select id="lang-dropdown" onchange="changeLanguage(this.value)">
                     <option value="de">Deutsch</option>
@@ -24,7 +28,7 @@
 
     <main class="container">
         
-        <!-- NAVIGATION -->
+        <!-- STARTSEITE / NAVIGATION -->
         <section id="home" class="active">
             <h2 data-i18n="home_title">Wählen Sie einen Rechner</h2>
             <div class="grid">
@@ -51,7 +55,7 @@
             </div>
         </section>
 
-        <!-- RECHNER ANZEIGE -->
+        <!-- RECHNER ANSICHT -->
         <section id="calculator-view" class="hidden">
             <button class="btn-secondary" onclick="showSection('home')" data-i18n="btn_back">← Zurück</button>
             
