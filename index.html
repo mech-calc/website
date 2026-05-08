@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MechCalc - Zerspanungsrechner</title>
+    <title>MechCalc - Profi Zerspanungsrechner</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -20,7 +20,6 @@
                 <select id="lang-dropdown" onchange="changeLanguage(this.value)">
                     <option value="de">Deutsch</option>
                     <option value="en">English</option>
-                    <option value="it">Italiano</option>
                 </select>
             </div>
         </div>
@@ -28,42 +27,45 @@
 
     <main class="container">
         <section id="home">
-            <h2 data-i18n="home_title">Wählen Sie einen Rechner</h2>
-            <div class="grid">
-                <!-- Die Funktionen rufen nun direkt openModal() auf -->
-                <div class="card nav-card" onclick="openModal('calc-bohren')">
-                    <div class="icon">⚙️</div>
-                    <h3 data-i18n="nav_bohren_vc">Schnittdaten Bohren</h3>
+            <h2 class="section-title" data-i18n="home_title">Wählen Sie einen Rechner</h2>
+            
+            <div class="mc-menu-grid">
+                <div class="mc-menu-tile" onclick="openModal('calc-drehen')">
+                    <div class="mc-menu-icon">🌀</div>
+                    <div class="mc-menu-title" data-i18n="nav_drehen_vc">Schnittdaten Drehen</div>
+                    <div class="mc-menu-desc">vc, n, f, vf</div>
                 </div>
-                <div class="card nav-card" onclick="openModal('calc-drehen')">
-                    <div class="icon">🌀</div>
-                    <h3 data-i18n="nav_drehen_vc">Schnittdaten Drehen</h3>
+                <div class="mc-menu-tile" onclick="openModal('calc-bohren')">
+                    <div class="mc-menu-icon">⚙️</div>
+                    <div class="mc-menu-title" data-i18n="nav_bohren_vc">Schnittdaten Bohren</div>
+                    <div class="mc-menu-desc">Optimale Bohrwerte</div>
                 </div>
-                <div class="card nav-card" onclick="openModal('calc-fraesen')">
-                    <div class="icon">✂️</div>
-                    <h3 data-i18n="nav_fraesen_vc">Schnittdaten Fräsen</h3>
+                <div class="mc-menu-tile" onclick="openModal('calc-fraesen')">
+                    <div class="mc-menu-icon">✂️</div>
+                    <div class="mc-menu-title" data-i18n="nav_fraesen_vc">Schnittdaten Fräsen</div>
+                    <div class="mc-menu-desc">fz, z und vf</div>
                 </div>
-                <div class="card nav-card" onclick="openModal('th-bohren')">
-                    <div class="icon">⏱️</div>
-                    <h3 data-i18n="nav_bohren_th">Hauptnutzungszeit Bohren</h3>
+                <div class="mc-menu-tile" onclick="openModal('th-rechner')">
+                    <div class="mc-menu-icon">⏱️</div>
+                    <div class="mc-menu-title" data-i18n="nav_th">Hauptnutzungszeit</div>
+                    <div class="mc-menu-desc">th (Drehen/Bohren)</div>
                 </div>
-                <div class="card nav-card" onclick="openModal('th-drehen')">
-                    <div class="icon">📈</div>
-                    <h3 data-i18n="nav_drehen_th">Hauptnutzungszeit Drehen</h3>
+                <div class="mc-menu-tile" onclick="openModal('weight-calc')">
+                    <div class="mc-menu-icon">⚖️</div>
+                    <div class="mc-menu-title" data-i18n="nav_weight">Gewichtrechner</div>
+                    <div class="mc-menu-desc">Materialgewicht bestimmen</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- MODERNES MODAL SYSTEM -->
     <div id="modal-overlay" class="modal-overlay">
-        <div class="modal-box card">
+        <div class="modal-box">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h2 id="calc-title">Titel</h2>
             
             <div id="input-fields" class="input-grid">
-                <!-- JS generiert hier die Felder -->
-            </div>
+                </div>
 
             <button class="btn-primary" onclick="calculate()" data-i18n="btn_calc">Berechnen</button>
 
