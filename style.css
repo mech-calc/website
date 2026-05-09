@@ -1,69 +1,99 @@
-:root {
-    --mc-bg: #111827;
-    --mc-card-bg: #1f2937;
+.mc-app-wrapper {
+    --mc-bg: #0f172a;
+    --mc-card: #1e293b;
     --mc-accent: #3b82f6;
-    --mc-text: #f3f4f6;
-    --mc-text-muted: #9ca3af;
-    --mc-border: #374151;
-}
-
-/* Kachel-Grid */
-.mc-grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
-}
-
-.mc-tile {
-    background: var(--mc-card-bg);
-    border: 1px solid var(--mc-border);
-    border-radius: 12px;
-    padding: 24px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
-
-.mc-tile:hover {
-    transform: translateY(-5px);
-    border-color: var(--mc-accent);
-    box-shadow: 0 10px 15px rgba(59, 130, 246, 0.2);
-}
-
-.mc-tile-icon { font-size: 2.5rem; margin-bottom: 12px; display: block; }
-.mc-tile-title { color: var(--mc-text); font-weight: 600; font-size: 1.1rem; }
-
-/* Rechner Design */
-.mc-calculator-block {
-    background: var(--mc-card-bg);
-    padding: 25px;
-    border-radius: 16px;
+    --mc-text: #f8fafc;
+    --mc-text-dim: #94a3b8;
+    --mc-border: #334155;
+    
+    font-family: 'Inter', sans-serif;
+    background: var(--mc-bg);
     color: var(--mc-text);
-    max-width: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 1000px;
     margin: 20px auto;
     border: 1px solid var(--mc-border);
 }
 
-.mc-form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
-.mc-form-group label { font-size: 0.85rem; color: var(--mc-text-muted); margin-bottom: 5px; }
-.mc-form-group input, .mc-form-group select {
-    background: #000; border: 1px solid var(--mc-border);
-    color: #fff; padding: 10px; border-radius: 6px; outline: none;
+.mc-header-controls {
+    padding: 10px 20px;
+    background: rgba(0,0,0,0.2);
+    text-align: right;
 }
 
-.mc-calc-btn {
-    background: var(--mc-accent); color: white; border: none;
-    padding: 12px; width: 100%; border-radius: 8px;
-    font-weight: 600; cursor: pointer; margin-top: 10px;
+#mc-lang-select {
+    background: var(--mc-card);
+    color: white;
+    border: 1px solid var(--mc-border);
+    padding: 5px 10px;
+    border-radius: 6px;
 }
 
-.mc-result-display {
-    margin-top: 20px; padding: 15px; background: #000;
-    border-radius: 8px; border-left: 4px solid var(--mc-accent);
+/* Tabs */
+.mc-tab-bar {
+    display: flex;
+    background: var(--mc-card);
+    border-bottom: 1px solid var(--mc-border);
 }
 
-/* Sprachwähler Styling */
-.mc-language-wrapper { text-align: right; margin-bottom: 10px; }
-#mc-language-select { background: #1f2937; color: white; border: 1px solid var(--mc-border); padding: 5px; border-radius: 4px; }
+.mc-tab-btn {
+    flex: 1;
+    padding: 18px;
+    background: transparent;
+    border: none;
+    color: var(--mc-text-dim);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.mc-tab-btn:hover { background: rgba(255,255,255,0.05); }
+
+.mc-tab-btn.mc-active {
+    color: var(--mc-accent);
+    border-bottom-color: var(--mc-accent);
+    background: rgba(59, 130, 246, 0.1);
+}
+
+/* Content */
+.mc-content-area { padding: 30px; min-height: 400px; }
+
+.mc-tab-panel, .mc-sub-panel { display: none; }
+.mc-tab-panel.mc-visible, .mc-sub-panel.mc-visible { 
+    display: block; 
+    animation: mcFadeIn 0.4s ease;
+}
+
+@keyframes mcFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sub-Navigation (für Schnittdaten) */
+.mc-sub-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.mc-sub-nav button {
+    background: var(--mc-border);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.mc-sub-nav button:hover { background: var(--mc-accent); }
+
+.mc-placeholder-box {
+    padding: 40px;
+    border: 2px dashed var(--mc-border);
+    border-radius: 12px;
+    text-align: center;
+    color: var(--mc-text-dim);
+}

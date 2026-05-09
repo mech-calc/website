@@ -1,18 +1,55 @@
-<!-- Sprachauswahl (kann überall platziert werden) -->
-<div class="mc-language-wrapper">
-    <select id="mc-language-select" onchange="mcChangeLanguage(this.value)">
-        <option value="de">Deutsch</option>
-        <option value="en">English</option>
-        <option value="it">Italiano</option>
-    </select>
-</div>
+<!-- MechCalc App-Container -->
+<div id="mc-app-root" class="mc-app-wrapper">
+    
+    <!-- Sprachauswahl -->
+    <div class="mc-header-controls">
+        <select id="mc-lang-select" onchange="mcChangeLanguage(this.value)">
+            <option value="de">Deutsch</option>
+            <option value="en">English</option>
+            <option value="it">Italiano</option>
+        </select>
+    </div>
 
-<!-- Das Kachelmenü -->
-<div id="mc-tile-menu-container" class="mc-grid-container">
-    <!-- Wird dynamisch durch JS befüllt -->
-</div>
+    <!-- Haupt-Navigation (Tabs) -->
+    <nav class="mc-tab-bar">
+        <button class="mc-tab-btn mc-active" onclick="mcShowTab('mc-sect-cutting', this)" id="mc-btn-cutting"></button>
+        <button class="mc-tab-btn" onclick="mcShowTab('mc-sect-time', this)" id="mc-btn-time"></button>
+        <button class="mc-tab-btn" onclick="mcShowTab('mc-sect-weight', this)" id="mc-btn-weight"></button>
+    </nav>
 
-<!-- Der Gewichtrechner (als Block für dein Modal) -->
-<div id="mc-weight-calculator" class="mc-calculator-block">
-    <!-- Wird dynamisch durch JS befüllt -->
+    <!-- Inhaltsbereiche -->
+    <div class="mc-content-area">
+        
+        <!-- Tab: Schnittdaten -->
+        <section id="mc-sect-cutting" class="mc-tab-panel mc-visible">
+            <div class="mc-sub-nav">
+                <button onclick="mcShowSub('mc-sub-turning')" id="mc-btn-turn"></button>
+                <button onclick="mcShowSub('mc-sub-drilling')" id="mc-btn-drill"></button>
+                <button onclick="mcShowSub('mc-sub-milling')" id="mc-btn-mill"></button>
+            </div>
+            <div id="mc-sub-turning" class="mc-sub-panel mc-visible">
+                <!-- Inhalte werden per JS/Funktion geladen -->
+                <div class="mc-placeholder-box" id="mc-txt-turning-placeholder"></div>
+            </div>
+            <div id="mc-sub-drilling" class="mc-sub-panel">
+                <div class="mc-placeholder-box" id="mc-txt-drilling-placeholder"></div>
+            </div>
+            <div id="mc-sub-milling" class="mc-sub-panel">
+                <div class="mc-placeholder-box" id="mc-txt-milling-placeholder"></div>
+            </div>
+        </section>
+
+        <!-- Tab: Hauptnutzungszeit -->
+        <section id="mc-sect-time" class="mc-tab-panel">
+            <h3 id="mc-txt-time-title"></h3>
+            <div class="mc-placeholder-box" id="mc-txt-time-placeholder"></div>
+        </section>
+
+        <!-- Tab: Gewichtsrechner -->
+        <section id="mc-sect-weight" class="mc-tab-panel">
+            <div id="mc-weight-calc-container">
+                <!-- Hier landet der Gewichtrechner -->
+            </div>
+        </section>
+    </div>
 </div>
