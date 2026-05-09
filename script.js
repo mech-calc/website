@@ -1,45 +1,39 @@
 const translations = {
     de: {
-        btn_t1: "Schnittdaten", btn_t2: "Fertigungszeit", btn_t3: "Gewicht", btn_t4: "Kompressoren",
-        h_cut: "Schnittdaten berechnen", h_time: "Zeitberechnung", h_weight: "Gewichtsberechnung",
-        h_comp: "Kolbenkompressor Rechner", lbl_d: "Durchmesser d (mm)", lbl_vc: "Schnittgeschw. vc (m/min)",
-        btn_calc1: "Berechnen", lbl_select_calc: "Berechnung wählen", btn_calc_comp: "Kompressor berechnen",
-        opt_A: "Kolbenfläche A", opt_h: "Kolbenhub h", opt_Vh: "Hubvolumen Vh",
-        opt_F: "Kolbenbelastung F", opt_sigma: "Flächenpressung σ", opt_Mmax: "Max. Drehmoment Mmax",
-        opt_Mmit: "Mittleres Drehmoment Mmit", opt_P: "Antriebsleistung P", opt_Qth: "Theoretische Luftmenge Qth",
-        opt_v: "Strömungsgeschwindigkeit v",
-        input_d: "Durchmesser d (mm)", input_r: "Kurbelradius r (mm)", input_p: "Druck p (bar)",
-        input_n: "Drehzahl n (U/min)", input_F: "Kraft F (N)", input_A: "Fläche A (mm²)",
-        input_Vh: "Hubvolumen Vh (cm³)", input_vms: "Geschw. v_m_s (m/s)", input_rmm: "Radius r (mm)",
-        res_error: "Bitte alle Felder ausfüllen!"
+        btn_t1: "📊 Schnittdaten", btn_t2: "⏱️ th Zeit", btn_t3: "⚖️ Gewicht", btn_t4: "🌀 Kompressor",
+        sbtn_turn: "🔄 Drehen", sbtn_mill: "🚜 Fräsen", sbtn_drill: "🎯 Bohren",
+        h_time: "⏱️ Hauptnutzungszeit th", h_weight: "⚖️ Gewichtsberechnung", h_comp: "🌀 Kolbenkompressor Technik",
+        lbl_d: "Werkstück-Ø d (mm)", lbl_vc: "Schnittgeschw. vc (m/min)", lbl_f: "Vorschub f (mm/U)",
+        lbl_fz: "Vorschub/Zahn fz (mm)", lbl_z: "Zähnezahl z", lbl_l: "Eingriffslänge L (mm)",
+        lbl_n: "Drehzahl n (1/min)", lbl_i: "Schnitte i", btn_calc: "🚀 Berechnen",
+        opt_Vh: "📏 Hubvolumen Vh", opt_F: "💪 Kolbenbelastung F", opt_Mmit: "⚙️ Drehmoment Mmit",
+        opt_P: "🔋 Antriebsleistung P", opt_Qth: "💨 Luftmenge Qth",
+        input_r: "Kurbelradius r (mm)", input_p: "Druck p (bar)", input_vh_val: "Hubvolumen Vh (cm³)",
+        input_m: "Drehmoment M (Nm)", res_error: "Eingabe prüfen!"
     },
     en: {
-        btn_t1: "Cutting Data", btn_t2: "Machining Time", btn_t3: "Weight", btn_t4: "Compressors",
-        h_cut: "Calculate Cutting Data", h_time: "Time Calculation", h_weight: "Weight Calculation",
-        h_comp: "Piston Compressor Calculator", lbl_d: "Diameter d (mm)", lbl_vc: "Cutting Speed vc (m/min)",
-        btn_calc1: "Calculate", lbl_select_calc: "Select Calculation", btn_calc_comp: "Calculate Compressor",
-        opt_A: "Piston Area A", opt_h: "Piston Stroke h", opt_Vh: "Displacement Vh",
-        opt_F: "Piston Load F", opt_sigma: "Surface Pressure σ", opt_Mmax: "Max Torque Mmax",
-        opt_Mmit: "Mean Torque Mmit", opt_P: "Drive Power P", opt_Qth: "Theoretical Air Flow Qth",
-        opt_v: "Flow Velocity v",
-        input_d: "Diameter d (mm)", input_r: "Crank Radius r (mm)", input_p: "Pressure p (bar)",
-        input_n: "Speed n (rpm)", input_F: "Force F (N)", input_A: "Area A (mm²)",
-        input_Vh: "Displacement Vh (cm³)", input_vms: "Velocity v_m_s (m/s)", input_rmm: "Radius r (mm)",
-        res_error: "Please fill all fields!"
+        btn_t1: "📊 Cutting Data", btn_t2: "⏱️ th Time", btn_t3: "⚖️ Weight", btn_t4: "🌀 Compressor",
+        sbtn_turn: "🔄 Turning", sbtn_mill: "🚜 Milling", sbtn_drill: "🎯 Drilling",
+        h_time: "⏱️ Machining Time th", h_weight: "⚖️ Weight Calculation", h_comp: "🌀 Piston Compressor Tech",
+        lbl_d: "Workpiece Ø d (mm)", lbl_vc: "Cutting Speed vc (m/min)", lbl_f: "Feed f (mm/rev)",
+        lbl_fz: "Feed per tooth fz (mm)", lbl_z: "Number of teeth z", lbl_l: "Length L (mm)",
+        lbl_n: "Speed n (RPM)", lbl_i: "Passes i", btn_calc: "🚀 Calculate",
+        opt_Vh: "📏 Displacement Vh", opt_F: "💪 Piston Load F", opt_Mmit: "⚙️ Torque Mmit",
+        opt_P: "🔋 Power P", opt_Qth: "💨 Air Flow Qth",
+        input_r: "Crank radius r (mm)", input_p: "Pressure p (bar)", input_vh_val: "Displacement Vh (cm³)",
+        input_m: "Torque M (Nm)", res_error: "Check input!"
     },
     it: {
-        btn_t1: "Dati di Taglio", btn_t2: "Tempo Produrre", btn_t3: "Peso", btn_t4: "Compressori",
-        h_cut: "Calcolo Dati Taglio", h_time: "Calcolo Tempo", h_weight: "Calcolo Peso",
-        h_comp: "Calcolatore Compressore a Pistoni", lbl_d: "Diametro d (mm)", lbl_vc: "Velocità vc (m/min)",
-        btn_calc1: "Calcolare", lbl_select_calc: "Seleziona Calcolo", btn_calc_comp: "Calcola Compressore",
-        opt_A: "Area del pistone A", opt_h: "Corsa del pistone h", opt_Vh: "Cilindrata Vh",
-        opt_F: "Carico del pistone F", opt_sigma: "Pressione superficiale σ", opt_Mmax: "Coppia massima Mmax",
-        opt_Mmit: "Coppia media Mmit", opt_P: "Potenza motrice P", opt_Qth: "Portata d'aria teorica Qth",
-        opt_v: "Velocità del flusso v",
-        input_d: "Diametro d (mm)", input_r: "Raggio manovella r (mm)", input_p: "Pressione p (bar)",
-        input_n: "Giri n (giri/min)", input_F: "Forza F (N)", input_A: "Area A (mm²)",
-        input_Vh: "Cilindrata Vh (cm³)", input_vms: "Velocità v_m_s (m/s)", input_rmm: "Raggio r (mm)",
-        res_error: "Per favore compila tutti i campi!"
+        btn_t1: "📊 Dati di Taglio", btn_t2: "⏱️ th Tempo", btn_t3: "⚖️ Peso", btn_t4: "🌀 Compressore",
+        sbtn_turn: "🔄 Tornitura", sbtn_mill: "🚜 Fresatura", sbtn_drill: "🎯 Foratura",
+        h_time: "⏱️ Tempo di lavorazione th", h_weight: "⚖️ Calcolo del Peso", h_comp: "🌀 Tecnica Compressore",
+        lbl_d: "Pezzo Ø d (mm)", lbl_vc: "Velocità vc (m/min)", lbl_f: "Avanzamento f (mm/g)",
+        lbl_fz: "Avanzamento dente fz (mm)", lbl_z: "Numero denti z", lbl_l: "Lunghezza L (mm)",
+        lbl_n: "Giri n (giri/min)", lbl_i: "Passate i", btn_calc: "🚀 Calcolare",
+        opt_Vh: "📏 Cilindrata Vh", opt_F: "💪 Carico pistone F", opt_Mmit: "⚙️ Coppia Mmit",
+        opt_P: "🔋 Potenza P", opt_Qth: "💨 Quantità aria Qth",
+        input_r: "Raggio manovella r (mm)", input_p: "Pressione p (bar)", input_vh_val: "Cilindrata Vh (cm³)",
+        input_m: "Coppia M (Nm)", res_error: "Errore input!"
     }
 };
 
@@ -48,10 +42,16 @@ let currentLang = 'de';
 function changeLanguage(lang) {
     currentLang = lang;
     const t = translations[lang];
-    for (let key in t) {
-        const el = document.getElementById(key.replace(/_/g, '-'));
-        if (el) el.innerText = t[key];
-    }
+    document.getElementById('btn-t1').innerText = t.btn_t1;
+    document.getElementById('btn-t2').innerText = t.btn_t2;
+    document.getElementById('btn-t3').innerText = t.btn_t3;
+    document.getElementById('btn-t4').innerText = t.btn_t4;
+    document.getElementById('sbtn-turn').innerText = t.sbtn_turn;
+    document.getElementById('sbtn-mill').innerText = t.sbtn_mill;
+    document.getElementById('sbtn-drill').innerText = t.sbtn_drill;
+    document.getElementById('h-time').innerText = t.h_time;
+    document.getElementById('h-weight').innerText = t.h_weight;
+    document.getElementById('h-comp').innerText = t.h_comp;
     renderCompInputs();
 }
 
@@ -62,47 +62,108 @@ function openTab(evt, tabId) {
     evt.currentTarget.classList.add('active');
 }
 
+function openSubTab(evt, subId) {
+    document.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(subId).classList.add('active');
+    evt.currentTarget.classList.add('active');
+}
+
+/* ZERSPANUNG */
+function calculateCutting() {
+    let sub = document.querySelector('.sub-panel.active').id;
+    let n, vf;
+    if (sub === 'cut-turning') {
+        const d = parseFloat(document.getElementById('in-turn-d').value);
+        const vc = parseFloat(document.getElementById('in-turn-vc').value);
+        const f = parseFloat(document.getElementById('in-turn-f').value);
+        n = (vc * 1000) / (Math.PI * d);
+        vf = n * f;
+    } else if (sub === 'cut-milling') {
+        const d = parseFloat(document.getElementById('in-mill-d').value);
+        const vc = parseFloat(document.getElementById('in-mill-vc').value);
+        const fz = parseFloat(document.getElementById('in-mill-fz').value);
+        const z = parseFloat(document.getElementById('in-mill-z').value);
+        n = (vc * 1000) / (Math.PI * d);
+        vf = n * fz * z;
+    } else {
+        const d = parseFloat(document.getElementById('in-drill-d').value);
+        const vc = parseFloat(document.getElementById('in-drill-vc').value);
+        const f = parseFloat(document.getElementById('in-drill-f').value);
+        n = (vc * 1000) / (Math.PI * d);
+        vf = n * f;
+    }
+    const res = document.getElementById('res-cut');
+    res.innerHTML = `Drehzahl n: ${n.toFixed(0)} 1/min | Vorschub vf: ${vf.toFixed(1)} mm/min`;
+    res.style.display = 'block';
+}
+
+/* ZEIT */
+function calculateTime() {
+    const l = parseFloat(document.getElementById('in-time-l').value);
+    const n = parseFloat(document.getElementById('in-time-n').value);
+    const f = parseFloat(document.getElementById('in-time-f').value);
+    const i = parseFloat(document.getElementById('in-time-i').value);
+    const th = (l * i) / (n * f);
+    const res = document.getElementById('res-time');
+    res.innerHTML = `Hauptnutzungszeit th = ${th.toFixed(2)} min`;
+    res.style.display = 'block';
+}
+
+/* GEWICHT */
+function toggleWeightInputs() {
+    const form = document.getElementById('in-w-form').value;
+    document.getElementById('w-d-div').style.display = form === 'round' ? 'flex' : 'none';
+    document.getElementById('w-b-div').style.display = form === 'flat' ? 'flex' : 'none';
+    document.getElementById('w-h-div').style.display = form === 'flat' ? 'flex' : 'none';
+}
+
+function calculateWeight() {
+    const rho = parseFloat(document.getElementById('in-w-rho').value);
+    const l = parseFloat(document.getElementById('in-w-l').value);
+    const form = document.getElementById('in-w-form').value;
+    let vol;
+    if (form === 'round') {
+        const d = parseFloat(document.getElementById('in-w-d').value);
+        vol = (Math.PI * Math.pow(d, 2) / 4) * l;
+    } else {
+        const b = parseFloat(document.getElementById('in-w-b').value);
+        const h = parseFloat(document.getElementById('in-w-h').value);
+        vol = b * h * l;
+    }
+    const kg = (vol * rho) / 1000000;
+    const res = document.getElementById('res-weight');
+    res.innerHTML = `Gesamtmasse: ${kg.toFixed(3)} kg`;
+    res.style.display = 'block';
+}
+
+/* KOMPRESSOR */
 function renderCompInputs() {
     const type = document.getElementById('comp-selector').value;
     const container = document.getElementById('comp-inputs');
     const t = translations[currentLang];
     container.innerHTML = "";
-
-    const createInput = (id, labelText) => {
-        container.innerHTML += `<div class="form-group"><label>${labelText}</label><input type="number" id="in-comp-${id}"></div>`;
-    };
-
-    if (type === "A") createInput("d", t.input_d);
-    if (type === "h") createInput("r", t.input_r);
-    if (type === "Vh") { createInput("d", t.input_d); createInput("r", t.input_r); }
-    if (type === "F") { createInput("p", t.input_p); createInput("d", t.input_d); }
-    if (type === "sigma") { createInput("F", t.input_F); createInput("A", t.input_A); }
-    if (type === "Mmax") { createInput("F", t.input_F); createInput("rmm", t.input_rmm); }
-    if (type === "Mmit") { createInput("F", t.input_F); createInput("r", t.input_r); }
-    if (type === "P") { createInput("Mmit", "Mmit (Nm)"); createInput("n", t.input_n); }
-    if (type === "Qth") { createInput("Vh", t.input_Vh); createInput("n", t.input_n); }
-    if (type === "v") { createInput("Vh", t.input_Vh); createInput("vms", t.input_vms); createInput("A", t.input_A); }
+    const add = (id, lbl) => container.innerHTML += `<div class="form-group"><label>${lbl}</label><input type="number" id="cp-${id}"></div>`;
+    
+    if (type === "Vh") { add("d", t.lbl_d); add("r", t.input_r); }
+    if (type === "F") { add("d", t.lbl_d); add("p", t.input_p); }
+    if (type === "Mmit") { add("f", "Kraft F (N)"); add("r", t.input_r); }
+    if (type === "P") { add("m", t.input_m); add("n", t.lbl_n); }
+    if (type === "Qth") { add("vh", t.input_vh_val); add("n", t.lbl_n); }
 }
 
 function calculateCompressor() {
     const type = document.getElementById('comp-selector').value;
     const resDiv = document.getElementById('res-comp');
-    const getVal = (id) => parseFloat(document.getElementById('in-comp-' + id).value);
-    let result = "";
-
+    const get = (id) => parseFloat(document.getElementById('cp-' + id).value);
+    let out = "";
     try {
-        if (type === "A") result = `A = ${((Math.pow(getVal("d"), 2) / 4) * Math.PI).toFixed(2)} mm²`;
-        else if (type === "h") result = `h = ${(2 * getVal("r")).toFixed(2)} mm`;
-        else if (type === "Vh") result = `Vh = ${(((Math.pow(getVal("d"), 2) / 4) * Math.PI * (2 * getVal("r"))) / 1000).toFixed(2)} cm³`;
-        else if (type === "F") result = `F = ${( (getVal("p") / 10) * ((Math.pow(getVal("d"), 2) / 4) * Math.PI) ).toFixed(2)} N`;
-        else if (type === "sigma") result = `σ = ${(getVal("F") / getVal("A")).toFixed(2)} N/mm²`;
-        else if (type === "Mmax") result = `Mmax = ${(getVal("F") * getVal("rmm") / 1000).toFixed(2)} Nm`;
-        else if (type === "Mmit") result = `Mmit = ${( (2 * getVal("F") * (getVal("r")/1000)) / Math.PI ).toFixed(2)} Nm`;
-        else if (type === "P") result = `P = ${( (getVal("Mmit") * getVal("n")) / 9550 ).toFixed(2)} kW`;
-        else if (type === "Qth") result = `Qth = ${(getVal("Vh") * getVal("n") / 1000).toFixed(2)} l/min`;
-        else if (type === "v") result = `v = ${( (getVal("Vh") * 1000 * getVal("vms")) / (getVal("A") * 60) ).toFixed(2)} m/s`;
-
-        resDiv.innerHTML = `<strong>Ergebnis: ${result}</strong>`;
+        if (type === "Vh") out = `Vh = ${( ((Math.pow(get('d'),2)/4)*Math.PI * 2*get('r'))/1000 ).toFixed(2)} cm³`;
+        if (type === "F") out = `F = ${( (get('p')/10) * ((Math.pow(get('d'),2)/4)*Math.PI) ).toFixed(2)} N`;
+        if (type === "Mmit") out = `Mmit = ${( (2 * get('f') * (get('r')/1000)) / Math.PI ).toFixed(2)} Nm`;
+        if (type === "P") out = `P = ${( (get('m') * get('n')) / 9550 ).toFixed(2)} kW`;
+        if (type === "Qth") out = `Qth = ${( (get('vh') * get('n')) / 1000 ).toFixed(2)} l/min`;
+        resDiv.innerHTML = out;
         resDiv.style.display = "block";
     } catch(e) { alert(translations[currentLang].res_error); }
 }
