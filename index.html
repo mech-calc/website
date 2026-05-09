@@ -1,87 +1,18 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MechCalc - Profi Zerspanungsrechner</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+<!-- Sprachauswahl (kann überall platziert werden) -->
+<div class="mc-language-wrapper">
+    <select id="mc-language-select" onchange="mcChangeLanguage(this.value)">
+        <option value="de">Deutsch</option>
+        <option value="en">English</option>
+        <option value="it">Italiano</option>
+    </select>
+</div>
 
-    <header>
-        <div class="header-container">
-            <h1 id="logo">
-                <a href="index.html">
-                    <img src="logo.png" alt="MechCalc Logo" class="logo-img">
-                </a>
-            </h1>
-            <div class="lang-selector">
-                <select id="lang-dropdown" onchange="changeLanguage(this.value)">
-                    <option value="de">Deutsch</option>
-                    <option value="en">English</option>
-                </select>
-            </div>
-        </div>
-    </header>
+<!-- Das Kachelmenü -->
+<div id="mc-tile-menu-container" class="mc-grid-container">
+    <!-- Wird dynamisch durch JS befüllt -->
+</div>
 
-    <main class="container">
-        <section id="home">
-            <h2 class="section-title" data-i18n="home_title">Wählen Sie einen Rechner</h2>
-            
-            <div class="mc-menu-grid">
-                <div class="mc-menu-tile" onclick="openModal('calc-drehen')">
-                    <div class="mc-menu-icon">🌀</div>
-                    <div class="mc-menu-title" data-i18n="nav_drehen_vc">Schnittdaten Drehen</div>
-                    <div class="mc-menu-desc">vc, n, f, vf</div>
-                </div>
-                <div class="mc-menu-tile" onclick="openModal('calc-bohren')">
-                    <div class="mc-menu-icon">⚙️</div>
-                    <div class="mc-menu-title" data-i18n="nav_bohren_vc">Schnittdaten Bohren</div>
-                    <div class="mc-menu-desc">Optimale Bohrwerte</div>
-                </div>
-                <div class="mc-menu-tile" onclick="openModal('calc-fraesen')">
-                    <div class="mc-menu-icon">✂️</div>
-                    <div class="mc-menu-title" data-i18n="nav_fraesen_vc">Schnittdaten Fräsen</div>
-                    <div class="mc-menu-desc">fz, z und vf</div>
-                </div>
-                <div class="mc-menu-tile" onclick="openModal('th-rechner')">
-                    <div class="mc-menu-icon">⏱️</div>
-                    <div class="mc-menu-title" data-i18n="nav_th">Hauptnutzungszeit</div>
-                    <div class="mc-menu-desc">th (Drehen/Bohren)</div>
-                </div>
-                <div class="mc-menu-tile" onclick="openModal('weight-calc')">
-                    <div class="mc-menu-icon">⚖️</div>
-                    <div class="mc-menu-title" data-i18n="nav_weight">Gewichtrechner</div>
-                    <div class="mc-menu-desc">Materialgewicht bestimmen</div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div id="modal-overlay" class="modal-overlay">
-        <div class="modal-box">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 id="calc-title">Titel</h2>
-            
-            <div id="input-fields" class="input-grid">
-                </div>
-
-            <button class="btn-primary" onclick="calculate()" data-i18n="btn_calc">Berechnen</button>
-
-            <div class="results-container">
-                <h3 data-i18n="title_results">Ergebnisse:</h3>
-                <div id="results-display"></div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-container">
-            <p>&copy; 2026 MechCalc V1.0 | Haris L.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+<!-- Der Gewichtrechner (als Block für dein Modal) -->
+<div id="mc-weight-calculator" class="mc-calculator-block">
+    <!-- Wird dynamisch durch JS befüllt -->
+</div>
