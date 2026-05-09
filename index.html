@@ -1,55 +1,74 @@
-<!-- MechCalc App-Container -->
-<div id="mc-app-root" class="mc-app-wrapper">
-    
-    <!-- Sprachauswahl -->
-    <div class="mc-header-controls">
-        <select id="mc-lang-select" onchange="mcChangeLanguage(this.value)">
-            <option value="de">Deutsch</option>
-            <option value="en">English</option>
-            <option value="it">Italiano</option>
-        </select>
-    </div>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MechCalc Pro - Engineering Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <!-- Haupt-Navigation (Tabs) -->
-    <nav class="mc-tab-bar">
-        <button class="mc-tab-btn mc-active" onclick="mcShowTab('mc-sect-cutting', this)" id="mc-btn-cutting"></button>
-        <button class="mc-tab-btn" onclick="mcShowTab('mc-sect-time', this)" id="mc-btn-time"></button>
-        <button class="mc-tab-btn" onclick="mcShowTab('mc-sect-weight', this)" id="mc-btn-weight"></button>
+<header>
+    <div class="logo">MechCalc <span style="color:white">Pro</span></div>
+    <select id="lang-switcher" onchange="changeLanguage(this.value)">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+        <option value="it">IT</option>
+    </select>
+</header>
+
+<div class="main-container">
+    <nav class="tab-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'tab-cutting')" id="btn-t1">Schnittdaten</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab-time')" id="btn-t2">Fertigungszeit</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab-weight')" id="btn-t3">Gewicht</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab-comp')" id="btn-t4">Kompressoren</button>
     </nav>
 
-    <!-- Inhaltsbereiche -->
-    <div class="mc-content-area">
-        
-        <!-- Tab: Schnittdaten -->
-        <section id="mc-sect-cutting" class="mc-tab-panel mc-visible">
-            <div class="mc-sub-nav">
-                <button onclick="mcShowSub('mc-sub-turning')" id="mc-btn-turn"></button>
-                <button onclick="mcShowSub('mc-sub-drilling')" id="mc-btn-drill"></button>
-                <button onclick="mcShowSub('mc-sub-milling')" id="mc-btn-mill"></button>
+    <section id="tab-cutting" class="content-panel active">
+        <h3 id="h-cut">Schnittdaten berechnen</h3>
+        <div class="calc-grid">
+            <div class="form-group">
+                <label id="lbl-d">Durchmesser d (mm)</label>
+                <input type="number" id="in-cut-d" placeholder="mm">
             </div>
-            <div id="mc-sub-turning" class="mc-sub-panel mc-visible">
-                <!-- Inhalte werden per JS/Funktion geladen -->
-                <div class="mc-placeholder-box" id="mc-txt-turning-placeholder"></div>
+            <div class="form-group">
+                <label id="lbl-vc">Schnittgeschw. vc (m/min)</label>
+                <input type="number" id="in-cut-vc" placeholder="m/min">
             </div>
-            <div id="mc-sub-drilling" class="mc-sub-panel">
-                <div class="mc-placeholder-box" id="mc-txt-drilling-placeholder"></div>
-            </div>
-            <div id="mc-sub-milling" class="mc-sub-panel">
-                <div class="mc-placeholder-box" id="mc-txt-milling-placeholder"></div>
-            </div>
-        </section>
+        </div>
+        <button class="action-btn" onclick="calcSimpleCut()" id="btn-calc1">Berechnen</button>
+        <div id="res-cut" class="result-display"></div>
+    </section>
 
-        <!-- Tab: Hauptnutzungszeit -->
-        <section id="mc-sect-time" class="mc-tab-panel">
-            <h3 id="mc-txt-time-title"></h3>
-            <div class="mc-placeholder-box" id="mc-txt-time-placeholder"></div>
-        </section>
+    <section id="tab-time" class="content-panel"><h3 id="h-time">Zeitberechnung</h3></section>
+    <section id="tab-weight" class="content-panel"><h3 id="h-weight">Gewichtsberechnung</h3></section>
 
-        <!-- Tab: Gewichtsrechner -->
-        <section id="mc-sect-weight" class="mc-tab-panel">
-            <div id="mc-weight-calc-container">
-                <!-- Hier landet der Gewichtrechner -->
-            </div>
-        </section>
-    </div>
+    <section id="tab-comp" class="content-panel">
+        <h3 id="h-comp">Kolbenkompressor Rechner</h3>
+        <div class="form-group">
+            <label id="lbl-select-calc">Berechnung wählen</label>
+            <select id="comp-selector" onchange="renderCompInputs()">
+                <option value="A" id="opt-A">Kolbenfläche A</option>
+                <option value="h" id="opt-h">Kolbenhub h</option>
+                <option value="Vh" id="opt-Vh">Hubvolumen Vh</option>
+                <option value="F" id="opt-F">Kolbenbelastung F</option>
+                <option value="sigma" id="opt-sigma">Flächenpressung σ</option>
+                <option value="Mmax" id="opt-Mmax">Max. Drehmoment Mmax</option>
+                <option value="Mmit" id="opt-Mmit">Mittleres Drehmoment Mmit</option>
+                <option value="P" id="opt-P">Antriebsleistung P</option>
+                <option value="Qth" id="opt-Qth">Theoretische Luftmenge Qth</option>
+                <option value="v" id="opt-v">Strömungsgeschwindigkeit v</option>
+            </select>
+        </div>
+        <div id="comp-inputs" class="calc-grid"></div>
+        <button class="action-btn" onclick="calculateCompressor()" id="btn-calc-comp">Kompressor berechnen</button>
+        <div id="res-comp" class="result-display"></div>
+    </section>
 </div>
+
+<footer>&copy; 2026 MechCalc Pro - Engineering Toolbox</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

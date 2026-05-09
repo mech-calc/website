@@ -1,99 +1,119 @@
-.mc-app-wrapper {
-    --mc-bg: #0f172a;
-    --mc-card: #1e293b;
-    --mc-accent: #3b82f6;
-    --mc-text: #f8fafc;
-    --mc-text-dim: #94a3b8;
-    --mc-border: #334155;
-    
-    font-family: 'Inter', sans-serif;
-    background: var(--mc-bg);
-    color: var(--mc-text);
-    border-radius: 12px;
-    overflow: hidden;
-    max-width: 1000px;
-    margin: 20px auto;
-    border: 1px solid var(--mc-border);
+:root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --text: #f8fafc;
+    --text-dim: #94a3b8;
+    --border: #334155;
+    --success: #10b981;
+    --input-bg: #0f172a;
 }
 
-.mc-header-controls {
-    padding: 10px 20px;
-    background: rgba(0,0,0,0.2);
-    text-align: right;
-}
-
-#mc-lang-select {
-    background: var(--mc-card);
-    color: white;
-    border: 1px solid var(--mc-border);
-    padding: 5px 10px;
-    border-radius: 6px;
-}
-
-/* Tabs */
-.mc-tab-bar {
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
     display: flex;
-    background: var(--mc-card);
-    border-bottom: 1px solid var(--mc-border);
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.mc-tab-btn {
+header {
+    background: #111827;
+    padding: 1rem 5%;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+
+.main-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    width: 95%;
     flex: 1;
-    padding: 18px;
-    background: transparent;
+}
+
+.tab-nav {
+    display: flex;
+    background: var(--card);
+    border-radius: 12px 12px 0 0;
+    border: 1px solid var(--border);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 15px;
     border: none;
-    color: var(--mc-text-dim);
+    background: transparent;
+    color: var(--text-dim);
     font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
     border-bottom: 3px solid transparent;
 }
 
-.mc-tab-btn:hover { background: rgba(255,255,255,0.05); }
-
-.mc-tab-btn.mc-active {
-    color: var(--mc-accent);
-    border-bottom-color: var(--mc-accent);
+.tab-btn.active {
+    color: var(--accent);
     background: rgba(59, 130, 246, 0.1);
+    border-bottom: 3px solid var(--accent);
 }
 
-/* Content */
-.mc-content-area { padding: 30px; min-height: 400px; }
-
-.mc-tab-panel, .mc-sub-panel { display: none; }
-.mc-tab-panel.mc-visible, .mc-sub-panel.mc-visible { 
-    display: block; 
-    animation: mcFadeIn 0.4s ease;
+.content-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 30px;
+    border-radius: 0 0 12px 12px;
+    display: none;
 }
 
-@keyframes mcFadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.content-panel.active { display: block; }
+
+.calc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
 }
 
-/* Sub-Navigation (für Schnittdaten) */
-.mc-sub-nav {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
+.form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
+.form-group label { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 8px; }
+.form-group input, .form-group select {
+    padding: 12px;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    color: white;
+    border-radius: 8px;
 }
 
-.mc-sub-nav button {
-    background: var(--mc-border);
+.action-btn {
+    background: var(--accent);
     color: white;
     border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
+    padding: 15px;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 0.9rem;
+    margin-top: 10px;
 }
 
-.mc-sub-nav button:hover { background: var(--mc-accent); }
-
-.mc-placeholder-box {
-    padding: 40px;
-    border: 2px dashed var(--mc-border);
-    border-radius: 12px;
-    text-align: center;
-    color: var(--mc-text-dim);
+.result-display {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid var(--success);
+    display: none;
 }
+
+footer { text-align: center; padding: 20px; color: var(--text-dim); font-size: 0.8rem; }
