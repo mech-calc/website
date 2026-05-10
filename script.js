@@ -5,8 +5,9 @@ const t = {
         h_time: "⏱️ Hauptnutzungszeit", h_weight: "⚖️ Gewichtsberechnung", h_comp: "🌀 Auslegung von Kompressoren",
         l_d: "Durchmesser d (mm)", l_vc: "vc (m/min)", l_f: "Vorschub f (mm/U)", l_z: "Zähnezahl z",
         l_l: "Schnittlänge L (mm)", l_la: "Anlauf la (mm)", l_lu: "Überlauf lu (mm)", l_n: "Drehzahl n (1/min)", l_i: "Anzahl Schnitte i",
-        l_mat: "Material (g/cm³)", l_form: "Form", l_wd: "Ø d (mm)", l_wb: "Breite B (mm)", l_wh: "Höhe H (mm)", l_wl: "Länge L (mm)",
+        l_mat: "Material", l_form: "Form", l_wd: "Ø d (mm)", l_wb: "Breite B (mm)", l_wh: "Höhe H (mm)", l_wl: "Länge L (mm)",
         btn: "🚀 Berechnen", opt_r: "Rund", opt_f: "Flach", sel_comp: "Berechnung wählen",
+        steel: "Stahl", alu: "Alu",
         comp: {
             a: "Kopffläche A", h: "Kolbenhub H", f: "Kolbenbelastung F", p: "Flächenpressung p", 
             mmax: "Max. Drehmoment Mmax", mm: "Mittl. Drehmoment Mm", pow: "Antriebsleistung P",
@@ -14,17 +15,18 @@ const t = {
         }
     },
     it: {
-        t1: "📊 Dati di taglio", t2: "⏱️ Tempo di lavorazione", t3: "⚖️ Peso", t4: "🌀 Compressore",
+        t1: "📊 Dati di taglio", t2: "⏱️ Tempo principale", t3: "⚖️ Peso", t4: "🌀 Compressore",
         st1: "🔄 Tornitura", st2: "⚙️ Fresatura", st3: "🎯 Foratura",
-        h_time: "⏱️ Tempo di lavorazione", h_weight: "⚖️ Calcolo del peso", h_comp: "🌀 Dimensionamento compressori",
+        h_time: "⏱️ Tempo principale th", h_weight: "⚖️ Calcolo del peso", h_comp: "🌀 Dimensionamento compressori",
         l_d: "Diametro d (mm)", l_vc: "vc (m/min)", l_f: "Avanzamento f (mm/g)", l_z: "Numero denti z",
         l_l: "Lunghezza L (mm)", l_la: "Entrata la (mm)", l_lu: "Uscita lu (mm)", l_n: "Giri n (1/min)", l_i: "Passate i",
-        l_mat: "Materiale (g/cm³)", l_form: "Profilo", l_wd: "Ø d (mm)", l_wb: "Larghezza B (mm)", l_wh: "Altezza H (mm)", l_wl: "Lunghezza L (mm)",
+        l_mat: "Materiale", l_form: "Profilo", l_wd: "Ø d (mm)", l_wb: "Larghezza B (mm)", l_wh: "Altezza H (mm)", l_wl: "Lunghezza L (mm)",
         btn: "🚀 Calcolare", opt_r: "Tondo", opt_f: "Piatto", sel_comp: "Seleziona calcolo",
+        steel: "Acciaio", alu: "Alluminio",
         comp: {
-            a: "Area testa A", h: "Corsa H", f: "Carico pistone F", p: "Pressione superf. p", 
+            a: "Area testa A", h: "Corsa H", f: "Carico pistone F", p: "Pressione p", 
             mmax: "Coppia max Mmax", mm: "Coppia media Mm", pow: "Potenza P",
-            q: "Portata aria Q", v: "Velocità flusso v"
+            q: "Portata aria Q", v: "Velocità v"
         }
     },
     en: {
@@ -33,8 +35,9 @@ const t = {
         h_time: "⏱️ Machining Time", h_weight: "⚖️ Weight Calculation", h_comp: "🌀 Compressor Sizing",
         l_d: "Diameter d (mm)", l_vc: "vc (m/min)", l_f: "Feed f (mm/rev)", l_z: "Teeth z",
         l_l: "Length L (mm)", l_la: "Approach la (mm)", l_lu: "Overrun lu (mm)", l_n: "Speed n (RPM)", l_i: "Passes i",
-        l_mat: "Material (g/cm³)", l_form: "Shape", l_wd: "Ø d (mm)", l_wb: "Width B (mm)", l_wh: "Height H (mm)", l_wl: "Length L (mm)",
+        l_mat: "Material", l_form: "Shape", l_wd: "Ø d (mm)", l_wb: "Width B (mm)", l_wh: "Height H (mm)", l_wl: "Length L (mm)",
         btn: "🚀 Calculate", opt_r: "Round", opt_f: "Flat", sel_comp: "Select calculation",
+        steel: "Steel", alu: "Aluminum",
         comp: {
             a: "Head Area A", h: "Stroke H", f: "Piston Load F", p: "Surface Pressure p", 
             mmax: "Max Torque Mmax", mm: "Mean Torque Mm", pow: "Power P",
@@ -44,12 +47,13 @@ const t = {
 };
 
 let currentLang = 'de';
-let subMode = 'turn'; 
-let thMode = 'turn';
+let subMode = 'cut-turning'; 
 
 function changeLanguage(lang) {
     currentLang = lang;
     const cur = t[lang];
+    
+    // UI Texte
     document.getElementById('t1').innerText = cur.t1;
     document.getElementById('t2').innerText = cur.t2;
     document.getElementById('t3').innerText = cur.t3;
@@ -79,10 +83,18 @@ function changeLanguage(lang) {
     document.getElementById('lbl-wh').innerText = cur.l_wh;
     document.getElementById('lbl-wl').innerText = cur.l_wl;
     document.getElementById('lbl-sel-comp').innerText = cur.sel_comp;
-    document.getElementById('btn-c').innerText = cur.btn;
-    document.getElementById('btn-th').innerText = cur.btn;
-    document.getElementById('btn-w').innerText = cur.btn;
-    document.getElementById('btn-comp').innerText = cur.btn;
+    
+    // Buttons
+    const buttons = ['btn-c', 'btn-th', 'btn-w', 'btn-comp'];
+    buttons.forEach(id => document.getElementById(id).innerText = cur.btn);
+
+    // Material Dropdown NEU LADEN (Fehlerbehebung)
+    const rhoSel = document.getElementById('w-rho');
+    const oldVal = rhoSel.value;
+    rhoSel.innerHTML = `<option value="7.85">${cur.steel} (7.85)</option><option value="2.7">${cur.alu} (2.7)</option>`;
+    if(oldVal) rhoSel.value = oldVal;
+
+    // Kompressor Dropdown NEU LADEN
     renderCompDropdown();
 }
 
@@ -101,7 +113,6 @@ function openSubTab(evt, mode) {
 }
 
 function setThMode(mode) {
-    thMode = mode;
     document.querySelectorAll('#tab-time .sub-btn').forEach(b => b.classList.remove('active'));
     event.currentTarget.classList.add('active');
 }
@@ -158,16 +169,17 @@ function calculateWeight() {
     res.style.display = 'block';
 }
 
-// KOMPRESSOR LOGIK
 function renderCompDropdown() {
     const s = document.getElementById('comp-mode');
     const cur = t[currentLang].comp;
+    const old = s.value;
     s.innerHTML = `
         <option value="A">${cur.a}</option><option value="H">${cur.h}</option>
         <option value="F">${cur.f}</option><option value="p">${cur.p}</option>
         <option value="Mmax">${cur.mmax}</option><option value="Mm">${cur.mm}</option>
         <option value="P">${cur.pow}</option><option value="Q">${cur.q}</option>
         <option value="v">${cur.v}</option>`;
+    if(old) s.value = old;
     renderCompInputs();
 }
 
@@ -181,11 +193,11 @@ function renderCompInputs() {
     if(mode === 'H') add('r', 'Kurbelradius r (mm)');
     if(mode === 'F') { add('p', 'Druck p (bar)', 10); add('a', 'Fläche A (mm²)', 2000); }
     if(mode === 'p') { add('f', 'Kraft F (N)', 5000); add('a', 'Fläche A (mm²)', 2000); }
-    if(mode === 'Mmax') { add('f', 'Kraft F (N)', 5000); add('l', 'Hebelarm l (mm)', 40); }
+    if(mode === 'Mmax') { add('f', 'Kraft F (N)', 5000); add('l', 'Länge l (mm)', 40); }
     if(mode === 'Mm') { add('f', 'Kraft F (N)', 5000); add('r', 'Radius r (mm)', 40); }
-    if(mode === 'P') { add('m', 'Drehmoment (Nm)', 100); add('n', 'Drehzahl (min⁻¹)', 1500); add('eta', 'η Wirkungsgrad', 0.85); }
-    if(mode === 'Q') { add('vh', 'Hubvolumen Vh (cm³)', 250); add('n', 'Drehzahl (min⁻¹)', 1500); }
-    if(mode === 'v') { add('vh', 'Hubvolumen (cm³)', 250); add('n', 'Drehzahl (min⁻¹)', 1500); add('a', 'Fläche A (cm²)', 50); }
+    if(mode === 'P') { add('m', 'Drehmoment M (Nm)', 100); add('n', 'Drehzahl n (min⁻¹)', 1500); add('eta', 'η (0.1-1)', 0.85); }
+    if(mode === 'Q') { add('vh', 'Vh (cm³)', 250); add('n', 'n (min⁻¹)', 1500); }
+    if(mode === 'v') { add('vh', 'Vh (cm³)', 250); add('n', 'n (min⁻¹)', 1500); add('a', 'Fläche A (cm²)', 50); }
 }
 
 function calculateComp() {
@@ -199,7 +211,7 @@ function calculateComp() {
     if(mode === 'F') out = `F = ${(get('p') * 0.1 * get('a')).toFixed(1)} N`;
     if(mode === 'p') out = `p = ${(get('f') / get('a')).toFixed(2)} N/mm²`;
     if(mode === 'Mmax') out = `Mmax = ${(get('f') * get('l') / 1000).toFixed(2)} Nm`;
-    if(mode === 'Mm') out = `Mm = ${(2 * get('f') * get('r') / 1000 / Math.PI).toFixed(2)} Nm`;
+    if(mode === 'Mm') out = `Mm = ${(2 * get('f') * get('r') / (Math.PI * 1000)).toFixed(2)} Nm`;
     if(mode === 'P') out = `P = ${( (get('m') * get('n')) / (9550 * get('eta')) ).toFixed(2)} kW`;
     if(mode === 'Q') out = `Q = ${(get('vh') * get('n') / 1000).toFixed(1)} l/min`;
     if(mode === 'v') out = `v = ${( (get('vh') * get('n')) / (get('a') * 6000) ).toFixed(3)} m/s`;

@@ -7,14 +7,14 @@
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
     margin: 0;
 }
 
 header {
-    padding: 1.5rem 10%;
+    padding: 1rem 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,24 +22,34 @@ header {
     border-bottom: 1px solid var(--border);
 }
 
+.logo { font-weight: 800; font-size: 1.3rem; letter-spacing: 1px; }
+
 .main-container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
 
 .tab-nav { display: flex; background: #010409; border: 1px solid var(--border); border-radius: 8px 8px 0 0; }
+
 .tab-btn { flex: 1; padding: 15px; border: none; background: transparent; color: #8b949e; cursor: pointer; font-weight: 600; }
+
 .tab-btn.active { color: var(--accent); border-bottom: 2px solid var(--accent); background: var(--card); }
 
 .content-panel { background: var(--card); border: 1px solid var(--border); border-top: none; padding: 25px; border-radius: 0 0 8px 8px; display: none; }
+
 .content-panel.active { display: block; }
 
 .sub-nav { display: flex; gap: 10px; margin-bottom: 20px; }
+
 .sub-btn { background: #21262d; border: 1px solid var(--border); color: white; padding: 8px 15px; border-radius: 6px; cursor: pointer; }
+
 .sub-btn.active { border-color: var(--accent); color: var(--accent); }
 
 .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+
 .form-group label { display: block; font-size: 0.85rem; margin-bottom: 5px; color: #8b949e; }
+
 input, select { width: 100%; padding: 10px; background: #0d1117; border: 1px solid var(--border); color: white; border-radius: 6px; box-sizing: border-box; }
 
 .action-btn { width: 100%; padding: 15px; margin-top: 20px; background: var(--accent); color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+
 .result-display { margin-top: 20px; padding: 15px; background: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent); border-radius: 6px; display: none; text-align: center; }
 
 footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #484f58; }

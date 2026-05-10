@@ -33,7 +33,7 @@
             <button class="sub-btn" onclick="openSubTab(event, 'cut-milling')" id="st2">⚙️ Fräsen</button>
             <button class="sub-btn" onclick="openSubTab(event, 'cut-drilling')" id="st3">🎯 Bohren</button>
         </div>
-        <div class="calc-grid" id="cutting-inputs">
+        <div class="calc-grid">
             <div class="form-group"><label id="lbl-d">Durchmesser d (mm)</label><input type="number" id="c-d" value="50"></div>
             <div class="form-group"><label id="lbl-vc">vc (m/min)</label><input type="number" id="c-vc" value="200"></div>
             <div class="form-group"><label id="lbl-f">f (mm/U)</label><input type="number" id="c-f" value="0.2"></div>
@@ -57,18 +57,15 @@
             <div class="form-group"><label id="lbl-tf">Vorschub f (mm/U)</label><input type="number" id="th-f" value="0.2"></div>
             <div class="form-group"><label id="lbl-ti">Anzahl Schnitte i</label><input type="number" id="th-i" value="1"></div>
         </div>
-        <button class="action-btn" onclick="calculateTh()" id="btn-th">🚀 th Berechnen</button>
+        <button class="action-btn" onclick="calculateTh()" id="btn-th">🚀 Berechnen</button>
         <div id="res-time" class="result-display"></div>
     </section>
 
     <section id="tab-weight" class="content-panel">
         <h3 id="h-weight">⚖️ Gewichtsberechnung</h3>
         <div class="calc-grid">
-            <div class="form-group"><label id="lbl-mat">Material (g/cm³)</label>
-                <select id="w-rho">
-                    <option value="7.85">Stahl (7.85)</option>
-                    <option value="2.7">Alu (2.7)</option>
-                </select>
+            <div class="form-group"><label id="lbl-mat">Material</label>
+                <select id="w-rho"></select>
             </div>
             <div class="form-group"><label id="lbl-form">Form</label>
                 <select id="w-form" onchange="toggleWeightInputs()">
@@ -81,7 +78,7 @@
             <div class="form-group w-flat-box" style="display:none"><label id="lbl-wh">Höhe H (mm)</label><input type="number" id="w-h" value="10"></div>
             <div class="form-group"><label id="lbl-wl">Länge L (mm)</label><input type="number" id="w-l" value="1000"></div>
         </div>
-        <button class="action-btn" onclick="calculateWeight()" id="btn-w">🚀 Masse berechnen</button>
+        <button class="action-btn" onclick="calculateWeight()" id="btn-w">🚀 Berechnen</button>
         <div id="res-weight" class="result-display"></div>
     </section>
 
